@@ -10,9 +10,9 @@
 #! ---------------------------------------------------------------
 site:
   subtitle: Stephen Tse's Blog
-  author: Stephen Tse
+  author: 谢华客
   nick: Stephen Tse's Blog
-  description:
+  description: 记录一些笔记和心情的地方
   link: '/'
   language: cn
   multi_language: true
@@ -53,7 +53,7 @@ menu:
 #! @docs https://aurora.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 theme:
-  dark_mode: true
+  dark_mode: false
   profile_shape: diamond # support `circle`, `diamond`, `rounded`
   gradient:
     color_1: '#24c6dc'
