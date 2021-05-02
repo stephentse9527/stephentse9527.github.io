@@ -99,11 +99,11 @@ site_meta:
 gitalk:
   enable: true
   autoExpand: true
-  clientID: ''
-  clientSecret: ''
-  repo: 'dev-blog-comments'
-  owner: 'TriDiamond'
-  admin: ['TriDiamond']
+  clientID: '22348af3f9b397bb7c5d'
+  clientSecret: 'af373326dc91b9851337ad6111d2cada777e8913'
+  repo: 'https://stephentse9527.github.io/'
+  owner: 'stephentse9527'
+  admin: ['stephentse9527']
   id: uid
   language: en
   distractionFreeMode: true
