@@ -103,5 +103,5 @@ theme: aurora
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://github.com/stephentse9527/stephentse9527.github.io.git
+  repository: git@github.com:stephentse9527/stephentse9527.github.io.git
   branch: master

@@ -47,7 +47,7 @@ tags:
 1. 对原始文件进行改动后，依次执行
 
    ```sh
-   git add -all
+   git add --all
    git commit -m "message"
    git push origin hexo
    ```
