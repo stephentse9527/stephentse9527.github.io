@@ -102,10 +102,10 @@ gitalk:
   enable: true
   autoExpand: true
   clientID: '22348af3f9b397bb7c5d'
-  clientSecret: 'c7a3e917f13cd33f652793a0593fb8cb8d4c596e'
-  repo: 'stephentse9527.github.io'
-  owner: '76936033'
-  admin: ['76936033']
+  clientSecret: 'af373326dc91b9851337ad6111d2cada777e8913'
+  repo: 'https://stephentse9527.github.io/'
+  owner: 'stephentse9527'
+  admin: ['stephentse9527']
   id: uid
   language: en
   distractionFreeMode: true
