@@ -53,7 +53,7 @@ menu:
 #! @docs https://aurora.tridiamond.tech/guide/theme.html
 #! ---------------------------------------------------------------
 theme:
-  dark_mode: false
+  dark_mode: auto
   profile_shape: diamond # support `circle`, `diamond`, `rounded`
   gradient:
     color_1: '#24c6dc'
@@ -109,7 +109,7 @@ gitalk:
   id: uid
   language: en
   distractionFreeMode: true
-  recentComment: true
+  recentComment: false
   proxy: ''
 
 # Valine comment plugin (recommended!)
