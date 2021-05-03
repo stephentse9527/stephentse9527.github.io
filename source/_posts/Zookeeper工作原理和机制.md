@@ -2,9 +2,9 @@
 title: Zookeeper工作原理和机制
 date: 2021-05-03 20:37:38
 categories:
-  - 中间件
-  - Zookeeper
-  - 底层原理
+- 中间件
+- Zookeeper
+- 底层原理
 ---
 
 # Zookeeper工作机制

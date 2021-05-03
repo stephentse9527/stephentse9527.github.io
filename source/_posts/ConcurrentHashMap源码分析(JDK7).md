@@ -2,10 +2,7 @@
 
 title: ConcurrentHashMap源码分析(JDK7)
 date: 2021-05-03 15:49:58
-categories:
-  - Java
-  - 源码分析
-  - 多线程
+categories: ['Java', '源码分析', '多线程']
 ---
 
 ### 一、Unsafe介绍

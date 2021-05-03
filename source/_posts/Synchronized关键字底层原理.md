@@ -2,9 +2,9 @@
 title: Synchronized关键字底层原理
 date: 2021-05-03 20:50:19
 categories:
-  - Java
-  - 底层原理
-  - 多线程
+- Java
+- 底层原理
+- 多线程
 ---
 
 # Synchronized 关键字底层原理

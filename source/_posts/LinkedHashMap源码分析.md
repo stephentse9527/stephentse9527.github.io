@@ -1,9 +1,7 @@
 ---
 title: LinkedHashMap源码分析
 date: 2021-05-03 20:28:47
-categories:
-  - Java
-  - 源码分析
+categories: ['Java', '源码分析']
 ---
 
 ### LinkedHashMap源码分析

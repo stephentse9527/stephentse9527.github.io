@@ -2,10 +2,7 @@
 
 title: Hystrix底层原理
 date: 2021-05-03 20:31:56
-categories:
-  - 中间件
-  - 底层原理
-  - Hystrix
+categories: ['中间件', '底层原理', 'Hystrix']
 ---
 
 ### Hystrix 是什么？
