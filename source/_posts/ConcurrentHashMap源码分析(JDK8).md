@@ -1,7 +1,7 @@
 ---
 title: ConcurrentHashMap源码分析(JDK8)
 date: 2021-05-03 16:02:52
-categories: ['Java', '源码分析', '多线程']
+tags: ['Java', '源码分析', '多线程']
 ---
 
 ### 一、jdk1.8容器初始化

@@ -1,7 +1,7 @@
 ---
 title: Synchronized关键字底层原理
 date: 2021-05-03 20:50:19
-categories:
+tags:
 - Java
 - 底层原理
 - 多线程

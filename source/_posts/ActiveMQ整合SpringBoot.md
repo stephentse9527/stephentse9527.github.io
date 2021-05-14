@@ -1,6 +1,10 @@
 ---
 title: ActiveMQ整合SpringBoot
 date: 2021-05-03 21:16:08
+tags:
+  - 中间件
+  - ActiveMQ
+  - 使用心得
 ---
 
 # ActiveMQ 整合 SpringBoot

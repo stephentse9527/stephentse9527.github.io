@@ -1,7 +1,7 @@
 ---
 title: MySQL之索引底层原理
 date: 2021-05-03 21:08:22
-categories: ['MySQL', '底层原理']
+tags: ['MySQL', '底层原理']
 ---
 
 ### InnoDB 页结构

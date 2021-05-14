@@ -1,7 +1,7 @@
 ---
 title: HashMap源码分析(JDK8)
 date: 2021-05-03 17:00:48
-categories: ['Java', '源码分析']
+tags: ['Java', '源码分析']
 ---
 
 ## HashMap源码分析(JDK8)

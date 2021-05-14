@@ -1,7 +1,7 @@
 ---
 title: RabbitMQ整合SpringBoot
 date: 2021-05-03 21:03:59
-categories: ['RabbitMQ', '使用心得', '中间件']
+tags: ['RabbitMQ', '使用心得', '中间件']
 ---
 
 # RabbitMQ的使用
