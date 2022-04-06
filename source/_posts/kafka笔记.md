@@ -1,7 +1,7 @@
 ---
-title: Kafka原理
+title: kafka笔记
 date: 2022-04-05 23:26:59
-tags: ['RabbitMQ', '使用心得', '中间件']
+tags: ['kafka', '原理', '中间件']
 ---
 
 # Kafka笔记
