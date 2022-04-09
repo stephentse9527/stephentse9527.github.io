@@ -59,29 +59,40 @@ kafka在写入日志文件时，同时会维护索引文件，在往日志文件
 
 ![生产者发送流程](kafka笔记/3.png)
 
-##### 分区的计算
+##### 消息的序列化
 
-生产者需要把消息发送到Topic的某个partition中，那到底发送到哪个分区中呢，这个是和消息的`key`有关的，
 
-- 当没有给消息设置key时，消息会以`轮询`的形式发送到下一个分区中
-
-- 也可以给消息指定一个key，会根据`key+topic`计算出hash值，然后对分区数取余，这样可以保证同样的key肯定会发送到同一个分区上
-
-  > 可以利用这一点，来控制某些消息往固定的分区发送
 
 ##### 分区器partitionor
 
-知道了要发往哪个分区，一般情况下，kafka都是以集群的形式部署的，而写入操作是会写到leader节点上的，那怎么知道哪个broker上的分区是这个分区的leader呢，使用的是partitionor分区器，来获取kafka集群的元数据，从而知道哪个是leader partition
-
-##### 缓冲区
-
-kafka并不会立即将消息发送出去，而是包装成RecordBatch，批量收集，放入缓冲区中
-
-##### Sender线程
-
-如果batch满了，就会唤醒sender线程，将这个batch发送到对应的broker上
+假设知道了要发往哪个分区，一般情况下，kafka都是以集群的形式部署的，而写入操作是会写到leader节点上的，那怎么知道哪个broker上的分区是这个分区的leader呢，使用的是partitionor分区器，来获取kafka集群的元数据，从而知道哪个是leader partition
 
 
+
+##### 分区的计算
+
+生产者需要把一个batch的消息发送到Topic的某个partition中，那到底发送到哪个分区中呢，这个是和消息的`key`和分区器有关的，
+
+- **默认分区器(DefaultPartitioner)**
+  - 当没有给消息设置key时，消息会以`带有粘性的随机`的形式发送到下一个分区中
+  - 也可以给消息指定一个key，会根据`key`计算出hash值，然后对分区数取余，这样可以保证同样的key肯定会发送到同一个分区上
+- **轮询分区器(RoundRobinPartitioner)**：字面意思，以轮询的形式，获取该topic的下一个分区进行发送
+- **根据业务自定义自己的分区器**：实现接口`Partitioner`，并在初始化生产者时，把自己的实现类放进参数map中的`partitioner.class`即可
+
+##### **缓冲**区
+
+kafka并不会立即将消息发送出去，而是包装成RecordBatch，放入缓冲区`BufferPool`中
+
+> ​	缓存区的模型和内存和其他细节，打算放在kafka源码阅读笔记中
+
+##### Sender发送时机
+
+先了解两个参数
+
+- `linger.ms`：发送延迟时间，默认0
+- `batch.size`：每个RecordBatch的最大容量，默认：16384，16K
+
+为减少负载和客户端的请求数量，生产者不会一条一条发送，而是会逗留一段时间批量发送。batch.size和linger.ms满足任何一个条件都会发送
 
 ##### Kafka消费者
 
