@@ -72,10 +72,10 @@ kafka在写入日志文件时，同时会维护索引文件，在往日志文件
 - **默认分区器(DefaultPartitioner)**
   - 当没有给消息设置key时，消息会以`带有粘性的随机`的形式发送到下一个分区中
   - 也可以给消息指定一个key，会根据`key`计算出hash值，然后对分区数取余，这样可以保证同样的key肯定会发送到同一个分区上
-- **轮询分区器(RoundRobinPartitioner)**：字面意思，以轮询的形式，获取该topic的下一个分区进行发送
+- **轮询分区器(RoundRobinPartitioner)** ：字面意思，以轮询的形式，获取该topic的下一个分区进行发送
 - **根据业务自定义自己的分区器**：实现接口`Partitioner`，并在初始化生产者时，把自己的实现类放进参数map中的`partitioner.class`即可
 
-##### **缓冲**区
+##### **缓冲区**
 
 kafka并不会立即将消息发送出去，而是包装成RecordBatch，放入缓冲区`BufferPool`中
 
@@ -194,3 +194,5 @@ offset就是用来控制当消费者应该从分区中的哪里进行消费的�
   > range和轮询都有一个缺点，就是在某个消费者挂了之后，重新分配消费分区可能会导致原本自己消费的分区被分给了其他消费者，相当于丢失了分区，比如当consumerA挂了，对于range来说，partition0~3会分配给consumerB，4～6会分配给consumerC，这导致了B丢失了原本消费的partition4，同理，对于round-robin来说B丢失了分区1，C丢失了分区2
 
 - **sticky**：sticky策略在rebalance的时候，会在保持原有消费的分区的情况下，再把多余的分区均匀的分配给剩下的消费者
+
+#### 集群架构
