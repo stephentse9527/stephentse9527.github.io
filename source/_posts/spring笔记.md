@@ -32,11 +32,44 @@ date: 2022-05-21 12:37:38
 
 ![spring-springframework-mvc-5](spring笔记/spring-springframework-mvc-5.png)
 
-- **首先用户发送请求——>DispatcherServlet**，前端控制器收到请求后自己不进行处理，而是委托给其他的解析器进行 处理，作为统一访问点，进行全局的流程控制；
+- **首先用户发送请求——>DispatcherServlet**，前端控制器收到请求后自己不进行处理，而是委托给其他的解析器进行 处理，作为统一访问点，进行全局的流程控制；进入DispatcherServlet之前还会有Filter，可以做preFilter以及postFilter
 - **DispatcherServlet——>HandlerMapping**， HandlerMapping 将会把请求映射为 HandlerExecutionChain 对象（包含一 个Handler 处理器（页面控制器）对象、多个HandlerInterceptor 拦截器）对象，通过这种策略模式，很容易添加新的映射策略；目的：获得请求映射到的handler处理器以及拦截器
 - **DispatcherServlet——>HandlerAdapter**，HandlerAdapter 将会把处理器包装为适配器，从而支持多种类型的处理器， 即适配器设计模式的应用，从而很容易支持很多类型的处理器；
 - **HandlerAdapter——>处理器功能处理方法的调用**，HandlerAdapter 将会根据适配的结果调用真正的处理器的功能处 理方法，完成功能处理；并返回一个ModelAndView 对象（包含模型数据、逻辑视图名）；
 - **ModelAndView 的逻辑视图名——> ViewResolver**，ViewResolver 将把逻辑视图名解析为具体的View，通过这种策 略模式，很容易更换其他视图技术；
 - **View——>渲染**，View 会根据传进来的Model 模型数据进行渲染，此处的Model 实际是一个Map 数据结构，因此 很容易支持其他视图技术；
 - **返回控制权给DispatcherServlet**，由DispatcherServlet 返回响应给用户，到此一个流程结束。
+
+#### Spring IOC实现原理
+
+#### ![spring-framework-ioc-source-73](spring笔记/spring-framework-ioc-source-73.png)
+
+Spring顶层设计围绕`BeanFactory`和`BeanRegistry`来进行
+
+- **BeanFactory：工厂模式定义了IOC容器的基本功能规范**
+- **BeanRegistry： 向IOC容器手工注册 BeanDefinition 对象的方法**
+
+##### BeanDefinition：各种Bean对象及其相互的关系
+
+Bean对象存在依赖嵌套等关系，所以设计者设计了BeanDefinition，它用来对Bean对象及关系定义；我们在理解时只需要抓住如下三个要点
+
+- BeanDefinition 定义了各种Bean对象及其相互的关系
+
+-  BeanDefinitionReader 这是BeanDefinition的解析器
+
+-  BeanDefinitionHolder 这是BeanDefination的包装类，用来存储BeanDefinition，name以及aliases等
+
+##### IOC初始化流程
+
+![spring-framework-ioc-source-9](spring笔记/spring-framework-ioc-source-9.png)
+
+- 首先定位资源文件，通过ResourceLoader来完成资源文件的定位，并将其抽象成Resource对象
+- 接下来就是解析资源文件，通过 BeanDefinitionReader来完成定义信息的解析获取Bean的定义信息
+- 获取到BeanDefinition后，需要将其注册到IOC容器中，这由 IOC 实现 BeanDefinitionRegistry 接口来实现。注册过程就是在 IOC 容器内部维护的一个HashMap 来保存得到的 BeanDefinition 的过程。这个 HashMap 是 IoC 容器持有 bean 信息的场所，以后对 bean 的操作都是围绕这个HashMap 来实现的.
+
+##### Bean实例化
+
+从定义信息中将BeanDefinition信息注册到IOC容器中后，只是保存了Bean信息，使用这些Bean的话还需要去进行Bean的实例化
+
+##### Bean生命周期
 
