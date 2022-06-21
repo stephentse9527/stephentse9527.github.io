@@ -89,9 +89,9 @@ Bean对象存在依赖嵌套等关系，所以设计者设计了BeanDefinition�
 
 - 当要获取一个bean时，会调用getBean方法，实际的逻辑在doGetBean当中，首先会调用getSingleton方法，尝试从一级二级三级缓存中获取bean
 
-- **创建实例：**如果都没有，就会调用createBean方法来创建bean，通过beanDefinition获取bean 的信息，创建出一个原始对象，并将它放到三级缓存当中，三级缓存是以beanname做为key，可以执行函数作为value的map
+- **创建实例：**如果都没有，就会调用createBean方法来创建bean，通过beanDefinition获取bean 的信息，创建出一个原始对象，并将这个Bean的创建工厂放到三级缓存中
 
-- **属性注入**：接下来进行属性注入，初始化bean，值和Bean的引用注入进Bean对应的属性中
+- **属性注入**：接下来进行属性注入，初始化bean，把值和Bean的引用注入进Bean对应的属性中
 
 - **执行Aware方法**：执行Aware将在初始化前如果bean实现了Aware接口，就会执行这些Aware方法
 
