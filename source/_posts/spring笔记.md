@@ -136,7 +136,7 @@ Bean对象存在依赖嵌套等关系，所以设计者设计了BeanDefinition�
 #### Spring解决循环依赖的问题
 
 - 当要获取一个bean时，会调用getBean方法，实际的逻辑在doGetBean当中，首先会调用getSingleton方法，尝试从一级二级三级缓存中获取bean
-- 如果都没有，就会调用createBean方法来创建bean，通过beanDefinition获取bean 的信息，创建出一个原始对象，并将它放到三级缓存当中，三级缓存是以beanname做为key，可以执行函数作为value的map
+- 如果都没有，就会调用createBean方法来创建bean，通过beanDefinition获取bean 的信息，创建出一个原始对象，并将它放到三级缓存当中，三级缓存是以beanname做为key，创建工厂执行函数作为value的map
 - 当进行populaBean属性注入时，发现依赖B，就会去走getBean那一套，直到进行属性注入，这时候会发现A在三级缓存中已经有了，所以从三级缓存中拿出A的创建工厂，获得A的实例，B就顺利创建完成
 - 而回到A这边B也创建好了，只需要进行后面的初始化就可以了，然后将bean从二级缓存中放到一级缓存
 
